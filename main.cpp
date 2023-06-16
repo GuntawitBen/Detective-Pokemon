@@ -4,7 +4,6 @@
 #include <random>
 #include <thread>
 using namespace std;
-int count;
 
 bool randomquestion() {
   random_device rd;
@@ -12,13 +11,17 @@ bool randomquestion() {
   uniform_int_distribution<int> distribution(100, 999);
   int randomInteger = distribution(generator);
   cout << "\033[2J\033[1;1H";
+  cout << "==================================================" << endl;
   cout << "The imposter dropped the password!" << endl;
+  cout << "==================================================" << endl;
   this_thread::sleep_for(chrono::seconds(2));
-  cout << "Password: " << randomInteger << std::endl;
+  cout << "Password: " << randomInteger << endl;
+  cout << "==================================================" << endl;
   this_thread::sleep_for(chrono::seconds(3));
   cout << "\033[2J\033[1;1H";
   int userInput;
-  cout << "Quickly copy the password!: ";
+  cout << "==================================================" << endl;
+  cout << "Quickly! Copy the password!: ";
   cin >> userInput;
   if (userInput == randomInteger) {
     return 1;
@@ -54,25 +57,26 @@ int menu(){
   return 0;
     } 
 void printpokemon(Pokemon pokemon[], int size){
-
+  cout << "=============== List of Suspects =================" << endl;
   for (int i = 0; i < size; i++) {
    cout << "Pokemon " << i + 1 << ":" << std::endl;
-   cout << "Name: " << pokemon[i].getName() << std::endl;
-   cout << "Type: " << pokemon[i].getType() << std::endl;
-   cout << "Color: " << pokemon[i].getColor() << std::endl;
-   cout << "Code: " << pokemon[i].getCode() << std::endl;
-   cout << std::endl;
+   cout << "Name: " << pokemon[i].getName() << endl;
+   cout << "Type: " << pokemon[i].getType() << endl;
+   cout << "Color: " << pokemon[i].getColor() << endl;
+   cout << "Code: " << pokemon[i].getCode() << endl; 
+   cout << endl;
     }
+  cout << "==================================================" << endl;
 }
 int game(Pokemon imposter, Pokemon pokemon[], int size){
 
-  
   for (int i = 0; i < 5; i++) {
-   
     //if copy number correctly
     if (randomquestion() == 1) {
-      cout << "\033[2J\033[1;1H";
-      cout << "That is Correct!" << endl;
+     cout << "\033[2J\033[1;1H";
+     cout << "==================================================" << endl;
+     cout << "That is Correct!" << endl;
+     cout << "==================================================" << endl;
       this_thread::sleep_for(chrono::seconds(1));
       //function randomized hint
       cout << endl<< "HINT IS " << "CODE: " << imposter.getCode() << endl << endl;
@@ -88,8 +92,10 @@ int game(Pokemon imposter, Pokemon pokemon[], int size){
     //if copy number wrong
     else {
     health --;
-      cout << "\033[2J\033[1;1H";
-    cout << "Incorrect! You lose health!" << endl;
+     cout << "\033[2J\033[1;1H";
+     cout << "==================================================" << endl;
+     cout << "Incorrect! You lose health!" << endl;
+     cout << "==================================================" << endl;
       this_thread::sleep_for(chrono::seconds(1));
       printpokemon(pokemon, size);
     if (health != 0){
@@ -104,13 +110,21 @@ int game(Pokemon imposter, Pokemon pokemon[], int size){
     }
   
   }
+  cout << "==================================================" << endl;
   cout << "Health: " << health << "/5" << endl;
+  cout << "==================================================" << endl;
   cout << "You Die!" << endl;
+  this_thread::sleep_for(chrono::seconds(2));
+  cout << "\033[2J\033[1;1H";
+    cout << " ██████╗  █████╗  ██╗     ██╗███████╗  ██████╗  ██╗      ██╗███████╗███████╗ \n";
+    cout << "██╔════╝ ██╔══██╗ ████╗  ███║██╔════╝██║     ██║██║      ██║██╔════╝██║   ██╗\n";
+    cout << "██║  ███╗███████║ ██║ ██║ ██║███████╗██║     ██║ ██║    ██╔╝███████╗████████║\n"; 
+    cout << "██║   ██║██╔══██║ ██║     ██║██╔════╝██║     ██║  ██║  ██╔╝ ██╔════╝██║  ██╔╝\n";
+    cout << "╚██████╔╝██║  ██║ ██║     ██║███████║  ██████║      ████╔╝  ███████║██║   ██║\n"; 
+    cout << " ╚═════╝ ╚═╝  ╚═╝ ╚═╝     ╚═╝╚══════╝  ╚═════╝      ╚═══╝   ╚══════╝╚═╝   ╚═╝\n";
+
   return 0;
 }
-
-
-
 
 int main() {
 
@@ -130,36 +144,41 @@ int main() {
 
   // introduction
   char enter;
-  cout << "[In The Middle Of The Night, At Pokemon Center...]" << endl;
-  cout << "{Press Enter To Continue}" << endl;
-  cin.get(enter);
-  cout << "Charmander: Argghhhh!!! Helppp!! There is a dead body in the "
-          "cafeteria!!"
-       << endl;
-  cout << "{Press Enter To Continue}" << endl;
-  cin.get(enter);
-  cout << "[You are the detective pokemon, now you have to investigate and "
-          "find the killer]"
-       << endl;
-  cout << "{Press Enter To Continue}" << endl;
-  cin.get(enter);
-  cout << "Press [i] to view the list of all pokemons in the Pokemonn Center. "
-       << endl;
-
+  cout << "==================================================" << endl;
+  cout << " In The Middle Of The Night, At Pokemon Center... " << endl;
+  cout << "================================= Press Enter ====" << endl; cin.get(enter);
+  cout << "==== Charmander: =================================" << endl;
+  cout << "\"Argghhhh!!! Helppp!! There is a dead body!!\"" << endl;
+  cout << "================================= Press Enter ====" << endl; cin.get(enter);
+  cout << "==== You: ========================================" << endl;
+  cout << "\"Don't Worry! I'm the detective pokemon!\"" << endl;
+  cout << "================================= Press Enter ====" << endl; cin.get(enter);
+  cout << "==================================================" << endl;
+  cout << "Press Enter to view the list of suspects" << endl;
+  cout << "================================= Press Enter ====" << endl; cin.get(enter);
+  
   // Print Suspect list
+  cout << "\033[2J\033[1;1H";
   printpokemon(pokemon, 7);
   
   // Explain the Rule
-  cout << "In order to win, you need to collect all the hints before the "
-          "murderer kills you"
-       << endl;
-  cout << "{Press Enter To Continue}" << endl;
-  cin.get(enter);
-  cout << "To gain hints, you will be given a randomized numbers for 5 "
-          "seconds, then you have to correctly plagiarize the numbers"
-       << endl;
-  cout << "{Press Enter To Continue}" << endl;
-  cin.get(enter);
+  cout << "=============== Press Enter to View the Rules ====" << endl; cin.get(enter);
+  cout << "\033[2J\033[1;1H";
+  cout << "==== Rules (1/5) =================================" << endl;
+  cout << "In order to win, you need to collect 5 passcodes" << endl << " before the imposter kills you" << endl;
+  cout << "================================= Press Enter ====" << endl; cin.get(enter);
+  cout << "==== Rules (2/5) =================================" << endl;
+  cout << "Imposter will accidentally drop the passcode and " << endl << "you have to quickly plagiarize the codes" << endl;
+  cout << "================================= Press Enter ====" << endl; cin.get(enter);
+  cout << "==== Rules (3/5) =================================" << endl;
+  cout << "If you copy the right code, you will gain one hint" << endl;
+  cout << "================================= Press Enter ====" << endl; cin.get(enter);
+  cout << "==== Rules (4/5) =================================" << endl;
+  cout << "If you copy the wrong code, you will lose your " << endl << "health. You have 2 health."<< endl;
+  cout << "================================= Press Enter ====" << endl; cin.get(enter);
+  cout << "==== Rules (5/5) =================================" << endl;
+  cout << "The more attempt you made, the lower score you" << endl << " will get" << endl;
+  cout << "======================= Press Enter to Start! ====" << endl; cin.get(enter);
   cout << "Let's Start!!" << endl;
   this_thread::sleep_for(chrono::seconds(1));
 
