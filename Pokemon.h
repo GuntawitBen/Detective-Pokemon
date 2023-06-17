@@ -1,7 +1,10 @@
+#ifndef POKEMON_H
+#define POKEMON_H
 #include <iostream>
 #include <iomanip>
 #include <algorithm>
 using namespace std;
+#endif
 
 class Pokemon {
   private:
@@ -34,7 +37,7 @@ class Pokemon {
     int getCode(){
       return Code;
     }
-
+    
     Pokemon() {
         Name = "";
         Type = "";
@@ -49,4 +52,6 @@ class Pokemon {
         Code = code;
     }
 };
+
+
 
