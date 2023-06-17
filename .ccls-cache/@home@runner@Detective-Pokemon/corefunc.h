@@ -38,10 +38,13 @@ void randomizedhint(Pokemon* imposter){
   uniform_int_distribution<int> distribution(1, 3);
   
   i = distribution(generator);
+ 
   switch (i)  {
-    case 1:
-        cout << endl<< "HINT IS " << "Color: " << imposter->getColor() << endl << endl;
-        break;
+    case 1: 
+        cout << endl<< "HINT IS " << "Color: " << imposter->getColor() << endl;
+      
+      break;
+        
 
     case 2:
         cout << endl<< "HINT IS " << "Type: " << imposter->getType() << endl << endl;
@@ -60,7 +63,7 @@ void randomizedhint(Pokemon* imposter){
 bool randomquestion(){
   random_device rd;
   mt19937 generator(rd());
-  uniform_int_distribution<int> distribution(100, 999); //range random number indicate how hard the game is
+  uniform_int_distribution<int> distribution(100000, 999999); //range random number indicate how hard the game is
   int randomInteger = distribution(generator);
   cout << "\033[2J\033[1;1H";
   cout << "==================================================" << endl;
@@ -76,8 +79,8 @@ bool randomquestion(){
   cout << "Quickly! Copy the password!: ";
   cin >> userInput;
   if (userInput == randomInteger) {
-    return 1;
+    return 1; //copy correct
   } else {
-    return 0;
+    return 0; //copy wrong
   }
 }
