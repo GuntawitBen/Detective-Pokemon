@@ -24,7 +24,6 @@ Pokemon* randomimposter(Pokemon pokemon[], int size){
   mt19937 generator(rd());
   uniform_int_distribution<int> distribution(0, 7);
   int randomNumber = distribution(generator);
-  cout << "Imposter Pokemon:" << pokemon[randomNumber].getName() << endl;
   return &pokemon[randomNumber];
 }
 

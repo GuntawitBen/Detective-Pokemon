@@ -23,7 +23,7 @@ void Rule(){
   cout << "=============== Press Enter to View the Rules ====" << endl; cin.get(enter);
   cout << "\033[2J\033[1;1H";
   cout << "==== Rules (1/5) =================================" << endl;
-  cout << "In order to win, you need to collect 5 passcodes" << endl << " before the imposter kills you" << endl;
+  cout << "In order to win, you need to collect the passcodes" << endl << " before the imposter kills you" << endl;
   cout << "================================= Press Enter ====" << endl; cin.get(enter);
   cout << "==== Rules (2/5) =================================" << endl;
   cout << "Imposter will accidentally drop the passcode and " << endl << "you have to quickly plagiarize the codes" << endl;
