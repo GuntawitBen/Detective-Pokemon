@@ -25,9 +25,9 @@ void printpokemon(Pokemon pokemon[], int size){
 Pokemon* randomimposter(Pokemon pokemon[], int size){
   random_device rd;
   mt19937 generator(rd());
-  uniform_int_distribution<int> distribution(0, 7);
+  uniform_int_distribution<int> distribution(0, size);
   int randomNumber = distribution(generator);
-  return &pokemon[randomNumber];
+  return &pokemon[randomNumber];     
 }
 
 
@@ -65,7 +65,7 @@ void randomizedhint(Pokemon* imposter) {
 bool randomquestion(){
   random_device rd;
   mt19937 generator(rd());
-  uniform_int_distribution<int> distribution(1, 9); //range random number indicate how hard the game is
+  uniform_int_distribution<int> distribution(1000000, 9999999); //range random number indicate how hard the game is
   int randomInteger = distribution(generator);
   cout << "\033[2J\033[1;1H";
   cout << "==================================================" << endl;

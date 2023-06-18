@@ -48,7 +48,7 @@ void loadScoreboard(Score scores[], int size, const string& filename) {
 
 void updateScoreboard(const string& username, string attempt) {
   const string scoreboardFilename = "scoreboard.txt";
-  const int scoreboardSize = 5; // Maximum number of scores in the scoreboard
+  const int scoreboardSize = 10; // Maximum number of scores in the scoreboard
 
   Score scores[scoreboardSize];
 

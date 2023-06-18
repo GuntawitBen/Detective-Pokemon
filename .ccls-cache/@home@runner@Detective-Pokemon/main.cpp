@@ -6,12 +6,13 @@
 #include <chrono>
 #include <random>
 #include <thread>
+
 void game(Pokemon* imposter, Pokemon pokemon[], int size);
 int attempt=0, health=2, result=0;
 using namespace std;
 
-int menu(){
-
+int menu()
+    {
       attempt++;
       //take input
       int input=0;
@@ -35,7 +36,7 @@ void CloseTheCase(Pokemon* imposter, Pokemon pokemon[], int size){
   PrintOneTruth();
   this_thread::sleep_for(chrono::seconds(1));
   printpokemon(pokemon, size);
-  cout << "The Imposter is: "; cin >> number; //Win game
+  cout << "The Imposter is (Input number): "; cin >> number; //Win game
      if (imposter == &pokemon[number - 1]) {
      cout << "\033[2J\033[1;1H";  
        result = 1;
@@ -73,7 +74,7 @@ void CloseTheCase(Pokemon* imposter, Pokemon pokemon[], int size){
 
 void game(Pokemon* imposter, Pokemon pokemon[], int size){
 
-  for (int i = 0; i < 4; i++) {
+  for (int i = 0; i < 5; i++) {
     //if copy number correctly======================================
     if (randomquestion() == 1) {
       PrintCorrect();
@@ -110,17 +111,7 @@ void game(Pokemon* imposter, Pokemon pokemon[], int size){
           }
       } break; //out of for loop
     } 
-  if (result == 1){}
-  else{
-  //ran out of time
-  cout << "You're too slow! The imposter killed you!" << endl;
-  this_thread::sleep_for(chrono::seconds(1));
-  cout << "You Die!" << endl;
-  this_thread::sleep_for(chrono::seconds(1));
-  cout << "\033[2J\033[1;1H";
-  PrintGameOver(); //Game Over
-  this_thread::sleep_for(chrono::seconds(3));
-  }
+
 }
 
 int main()
