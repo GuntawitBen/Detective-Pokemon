@@ -41,6 +41,7 @@ void CloseTheCase(Pokemon* imposter, Pokemon pokemon[], int size){
        result = 1;
        string attemptStr = to_string(attempt);
      cout << "Congratulations! You correctly identified the imposter." << endl;
+       
      cout << "Please input your username: "; cin >> username;
      const string scoreboardFilename = "scoreboard.txt";
      updateScoreboard(username, attemptStr);
@@ -49,9 +50,24 @@ void CloseTheCase(Pokemon* imposter, Pokemon pokemon[], int size){
      else {
        result=0;
      cout << "Incorrect! The imposter is a different Pokémon." << endl;
+     cout << "You lose 1 health!" << endl;
           //menu
+       health--;
+       if (health == 0){
+         cout << "========================================" << endl;
+           cout << "Health: " << health << "/2" << endl;
+           cout << "========================================" << endl;
+           this_thread::sleep_for(chrono::seconds(1));
+           cout << "You Die!" << endl;
+           this_thread::sleep_for(chrono::seconds(1));
+           cout << "\033[2J\033[1;1H";
+           PrintGameOver(); //Game Over
+           this_thread::sleep_for(chrono::seconds(3));
+       }
+       else{
           if (menu() == 2) game(imposter, pokemon, size); //2 to game
           else CloseTheCase(imposter, pokemon, size); //1 to guess again
+       }
      }
 }
 

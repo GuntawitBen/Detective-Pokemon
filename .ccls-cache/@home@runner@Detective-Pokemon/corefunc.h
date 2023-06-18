@@ -4,6 +4,9 @@
 #include <random>
 #include <thread>
 using namespace std;
+  int colorHintGiven = 0;
+  int typeHintGiven = 0;
+  int codeHintGiven = 0;
 
 void printpokemon(Pokemon pokemon[], int size){
   cout << "=============== List of Suspects =================" << endl;
@@ -30,39 +33,39 @@ Pokemon* randomimposter(Pokemon pokemon[], int size){
 
 
 //radom hint
-void randomizedhint(Pokemon* imposter){
+void randomizedhint(Pokemon* imposter) {
   int i;
   random_device rd;
   mt19937 generator(rd());
   uniform_int_distribution<int> distribution(1, 3);
-  
-  i = distribution(generator);
- 
-  switch (i)  {
-    case 1: 
-        cout << endl<< "HINT IS " << "Color: " << imposter->getColor() << endl;
-      
-      break;
-        
 
-    case 2:
-        cout << endl<< "HINT IS " << "Type: " << imposter->getType() << endl << endl;
-        break;
+  do{
+      i = distribution(generator);
+      if (i == 1 && colorHintGiven == 0) {
+        cout << endl << "HINT IS " << "Color: " << imposter->getColor() << endl << endl;
+        colorHintGiven = 1; break;
+      } else if (i == 2 && typeHintGiven == 0) {
+        cout << endl << "HINT IS " << "Type: " << imposter->getType() << endl << endl;
+        typeHintGiven = 1; break;
+      } else if (i == 3 && codeHintGiven == 0) {
+        cout << endl << "HINT IS " << "CODE: " << imposter->getCode() << endl << endl;
+        codeHintGiven = 1; break;
+      }
+  } while (colorHintGiven != 1 && typeHintGiven != 1 && codeHintGiven != 1);
+
+  if (colorHintGiven == 1 && typeHintGiven == 1 && codeHintGiven == 1)
+    cout << "No more hints avaliable!" <<endl;
     
-    case 3:
-        cout << endl<< "HINT IS " << "CODE: " << imposter->getCode() << endl << endl;
-        break;
-    default:
-      cout << "error pls restart."<<endl;
-  
 }
-}
+
+
+
 
 //randon question
 bool randomquestion(){
   random_device rd;
   mt19937 generator(rd());
-  uniform_int_distribution<int> distribution(100000, 999999); //range random number indicate how hard the game is
+  uniform_int_distribution<int> distribution(1, 9); //range random number indicate how hard the game is
   int randomInteger = distribution(generator);
   cout << "\033[2J\033[1;1H";
   cout << "==================================================" << endl;
